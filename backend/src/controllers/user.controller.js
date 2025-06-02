@@ -150,7 +150,7 @@ const updateDocuments = asyncHandler(async (req, res) => {
         return res.status(403).json(new ApiError(403, "Unauthorized Access"));
     }
 
-    const documents = {};
+    const documents = submissionForm.documents || {};
     try {
         const uploadPromises = [];
 
