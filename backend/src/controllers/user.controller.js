@@ -87,7 +87,6 @@ const submitForm = asyncHandler(async (req, res) => {
 
 const filledForms = asyncHandler(async (req, res) => {
     const forms = (await SubmissionForm.find({ userId: req.user._id }));
-    // console.log(forms);
     return res.status(200).json(new ApiResponse(200, forms));
 });
 
@@ -99,7 +98,6 @@ const getForm = asyncHandler(async (req, res) => {
     if (req.user.role === "user" && req.user._id.toString() !== form.userId.toString()) {
         return res.status(403).json(new ApiError(403, "Unauthorized Access"));
     }
-    console.log(form)
     return res.status(200).json(new ApiResponse(200, form));
 });
 
